@@ -8,7 +8,7 @@ export class GunData extends Component {
     @property(Node)
     public muzzle: Node | null = null;
     @property(Number)
-    public bulletSpeed: Number = 1;
+    public bulletSpeed: number = 200;
     @property(AudioClip)
     public gunSound: AudioClip | null = null;
 }

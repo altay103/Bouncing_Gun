@@ -14,6 +14,7 @@ import {
     AudioSource
 } from 'cc';
 import { GunData } from './data/GunData';
+import { BulletController } from './BulletController';
 const { ccclass, property } = _decorator;
 
 @ccclass('GunController')
@@ -71,7 +72,6 @@ export class GunController extends Component {
             bullet.setWorldPosition(worldMuzzlePos);
             bullet.setWorldRotation(worldMuzzleRot);
             director.getScene().addChild(bullet);
-
             console.log("Bullet created");
             //this.playShotAudio(this.gunData.gunSound);
 
