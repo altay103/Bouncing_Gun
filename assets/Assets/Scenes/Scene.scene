@@ -37,7 +37,7 @@
     "_active": true,
     "_components": [],
     "_prefab": {
-      "__id__": 26
+      "__id__": 29
     },
     "_lpos": {
       "__type__": "cc.Vec3",
@@ -68,7 +68,7 @@
     },
     "autoReleaseAssets": false,
     "_globals": {
-      "__id__": 27
+      "__id__": 33
     },
     "_id": "847cf828-3fda-4005-a7d6-a8a0ebcb4240"
   },
@@ -462,8 +462,6 @@
     },
     "_enabled": true,
     "__prefab": null,
-    "animComp": null,
-    "gunData": null,
     "_id": "8c2FBlpXxJSpuGN/wEJbUk"
   },
   {
@@ -483,6 +481,9 @@
     "_components": [
       {
         "__id__": 13
+      },
+      {
+        "__id__": 28
       }
     ],
     "_prefab": null,
@@ -566,6 +567,9 @@
       },
       {
         "__id__": 25
+      },
+      {
+        "__id__": 26
       }
     ],
     "removedComponents": []
@@ -670,12 +674,51 @@
     }
   },
   {
+    "__type__": "CCPropertyOverrideInfo",
+    "targetInfo": {
+      "__id__": 27
+    },
+    "propertyPath": [
+      "gunSound"
+    ],
+    "value": {
+      "__uuid__": "40ff2883-327a-4f0f-96cf-9a74547dd355",
+      "__expectedType__": "cc.AudioClip"
+    }
+  },
+  {
+    "__type__": "cc.TargetInfo",
+    "localID": [
+      "31/zjgmZRKzIxlLUZHUg15"
+    ]
+  },
+  {
+    "__type__": "cc.AudioSource",
+    "_name": "",
+    "_objFlags": 0,
+    "__editorExtras__": {},
+    "node": {
+      "__id__": 14
+    },
+    "_enabled": true,
+    "__prefab": null,
+    "_clip": null,
+    "_loop": false,
+    "_playOnAwake": false,
+    "_volume": 1,
+    "_id": "38AXszpGdISZD2bjj3HkgD"
+  },
+  {
     "__type__": "cc.PrefabInfo",
     "root": null,
     "asset": null,
     "fileId": "847cf828-3fda-4005-a7d6-a8a0ebcb4240",
     "instance": null,
-    "targetOverrides": [],
+    "targetOverrides": [
+      {
+        "__id__": 30
+      }
+    ],
     "nestedPrefabInstanceRoots": [
       {
         "__id__": 15
@@ -683,30 +726,60 @@
     ]
   },
   {
-    "__type__": "cc.SceneGlobals",
-    "ambient": {
-      "__id__": 28
+    "__type__": "cc.TargetOverrideInfo",
+    "source": {
+      "__id__": 15
     },
-    "shadows": {
-      "__id__": 29
-    },
-    "_skybox": {
-      "__id__": 30
-    },
-    "fog": {
+    "sourceInfo": {
       "__id__": 31
     },
-    "octree": {
+    "propertyPath": [
+      "muzzle"
+    ],
+    "target": {
+      "__id__": 15
+    },
+    "targetInfo": {
       "__id__": 32
-    },
-    "skin": {
-      "__id__": 33
-    },
-    "lightProbeInfo": {
+    }
+  },
+  {
+    "__type__": "cc.TargetInfo",
+    "localID": [
+      "31/zjgmZRKzIxlLUZHUg15"
+    ]
+  },
+  {
+    "__type__": "cc.TargetInfo",
+    "localID": [
+      "0aUXZoHn5A652SHecrwyMW"
+    ]
+  },
+  {
+    "__type__": "cc.SceneGlobals",
+    "ambient": {
       "__id__": 34
     },
-    "postSettings": {
+    "shadows": {
       "__id__": 35
+    },
+    "_skybox": {
+      "__id__": 36
+    },
+    "fog": {
+      "__id__": 37
+    },
+    "octree": {
+      "__id__": 38
+    },
+    "skin": {
+      "__id__": 39
+    },
+    "lightProbeInfo": {
+      "__id__": 40
+    },
+    "postSettings": {
+      "__id__": 41
     },
     "bakedWithStationaryMainLight": false,
     "bakedWithHighpLightmap": false
