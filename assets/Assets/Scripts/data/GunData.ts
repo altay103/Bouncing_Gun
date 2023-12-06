@@ -3,6 +3,7 @@ const { ccclass, property } = _decorator;
 
 @ccclass('GunData')
 export class GunData extends Component {
+    
     @property(Prefab)
     public bullet: Prefab | null = null;
     @property(Node)

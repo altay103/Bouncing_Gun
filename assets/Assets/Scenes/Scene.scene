@@ -37,7 +37,7 @@
     "_active": true,
     "_components": [],
     "_prefab": {
-      "__id__": 39
+      "__id__": 30
     },
     "_lpos": {
       "__type__": "cc.Vec3",
@@ -68,7 +68,7 @@
     },
     "autoReleaseAssets": false,
     "_globals": {
-      "__id__": 43
+      "__id__": 31
     },
     "_id": "847cf828-3fda-4005-a7d6-a8a0ebcb4240"
   },
@@ -483,16 +483,16 @@
         "__id__": 13
       },
       {
-        "__id__": 35
+        "__id__": 26
       },
       {
-        "__id__": 36
+        "__id__": 27
       },
       {
-        "__id__": 37
+        "__id__": 28
       },
       {
-        "__id__": 38
+        "__id__": 29
       }
     ],
     "_prefab": null,
@@ -570,21 +570,6 @@
       },
       {
         "__id__": 24
-      },
-      {
-        "__id__": 26
-      },
-      {
-        "__id__": 28
-      },
-      {
-        "__id__": 30
-      },
-      {
-        "__id__": 32
-      },
-      {
-        "__id__": 34
       }
     ],
     "removedComponents": []
@@ -668,99 +653,6 @@
     "localID": [
       "85EMrmeetXI4DJRxS+yjPz"
     ]
-  },
-  {
-    "__type__": "CCPropertyOverrideInfo",
-    "targetInfo": {
-      "__id__": 27
-    },
-    "propertyPath": [
-      "_lrot"
-    ],
-    "value": {
-      "__type__": "cc.Quat",
-      "x": 0.7071067811865476,
-      "y": 0,
-      "z": 0,
-      "w": -0.7071067811865475
-    }
-  },
-  {
-    "__type__": "cc.TargetInfo",
-    "localID": [
-      "0aUXZoHn5A652SHecrwyMW"
-    ]
-  },
-  {
-    "__type__": "CCPropertyOverrideInfo",
-    "targetInfo": {
-      "__id__": 29
-    },
-    "propertyPath": [
-      "_euler"
-    ],
-    "value": {
-      "__type__": "cc.Vec3",
-      "x": 270,
-      "y": 0,
-      "z": 0
-    }
-  },
-  {
-    "__type__": "cc.TargetInfo",
-    "localID": [
-      "0aUXZoHn5A652SHecrwyMW"
-    ]
-  },
-  {
-    "__type__": "CCPropertyOverrideInfo",
-    "targetInfo": {
-      "__id__": 31
-    },
-    "propertyPath": [
-      "gunSound"
-    ],
-    "value": {
-      "__uuid__": "40ff2883-327a-4f0f-96cf-9a74547dd355",
-      "__expectedType__": "cc.AudioClip"
-    }
-  },
-  {
-    "__type__": "cc.TargetInfo",
-    "localID": [
-      "31/zjgmZRKzIxlLUZHUg15"
-    ]
-  },
-  {
-    "__type__": "CCPropertyOverrideInfo",
-    "targetInfo": {
-      "__id__": 33
-    },
-    "propertyPath": [
-      "_lpos"
-    ],
-    "value": {
-      "__type__": "cc.Vec3",
-      "x": 0,
-      "y": 0,
-      "z": 0
-    }
-  },
-  {
-    "__type__": "cc.TargetInfo",
-    "localID": [
-      "c1VDLX+JNXrqqN9MUCJGC3"
-    ]
-  },
-  {
-    "__type__": "CCPropertyOverrideInfo",
-    "targetInfo": {
-      "__id__": 31
-    },
-    "propertyPath": [
-      "bulletSpeed"
-    ],
-    "value": 4
   },
   {
     "__type__": "cc.AudioSource",
@@ -867,11 +759,7 @@
     "asset": null,
     "fileId": "847cf828-3fda-4005-a7d6-a8a0ebcb4240",
     "instance": null,
-    "targetOverrides": [
-      {
-        "__id__": 40
-      }
-    ],
+    "targetOverrides": [],
     "nestedPrefabInstanceRoots": [
       {
         "__id__": 15
@@ -879,60 +767,30 @@
     ]
   },
   {
-    "__type__": "cc.TargetOverrideInfo",
-    "source": {
-      "__id__": 15
-    },
-    "sourceInfo": {
-      "__id__": 41
-    },
-    "propertyPath": [
-      "muzzle"
-    ],
-    "target": {
-      "__id__": 15
-    },
-    "targetInfo": {
-      "__id__": 42
-    }
-  },
-  {
-    "__type__": "cc.TargetInfo",
-    "localID": [
-      "31/zjgmZRKzIxlLUZHUg15"
-    ]
-  },
-  {
-    "__type__": "cc.TargetInfo",
-    "localID": [
-      "0aUXZoHn5A652SHecrwyMW"
-    ]
-  },
-  {
     "__type__": "cc.SceneGlobals",
     "ambient": {
-      "__id__": 44
+      "__id__": 32
     },
     "shadows": {
-      "__id__": 45
+      "__id__": 33
     },
     "_skybox": {
-      "__id__": 46
+      "__id__": 34
     },
     "fog": {
-      "__id__": 47
+      "__id__": 35
     },
     "octree": {
-      "__id__": 48
+      "__id__": 36
     },
     "skin": {
-      "__id__": 49
+      "__id__": 37
     },
     "lightProbeInfo": {
-      "__id__": 50
+      "__id__": 38
     },
     "postSettings": {
-      "__id__": 51
+      "__id__": 39
     },
     "bakedWithStationaryMainLight": false,
     "bakedWithHighpLightmap": false
