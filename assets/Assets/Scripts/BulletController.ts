@@ -8,15 +8,17 @@ export class BulletController extends Component {
     rigidbody: RigidBody | null = null;
 
     onLoad() {
-        this.rigidbody=this.getComponent(RigidBody);
-        const bulletSpeed:number=find("Gun").children[0].getComponent(GunData).bulletSpeed;
+        this.rigidbody = this.getComponent(RigidBody);
+        const bulletSpeed: number = find("Gun").children[0].getComponent(GunData).bulletSpeed;
         this.rigidbody.setLinearVelocity(this.node.up.multiplyScalar(bulletSpeed));
 
-        this.scheduleOnce(()=>{
+        this.schuleDestroy();
+    }
+    schuleDestroy(){
+        this.scheduleOnce(() => {
             this.node.destroy()
         }, Constants.bulletLifeTime);
     }
-
 
 }
 
