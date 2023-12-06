@@ -11,21 +11,25 @@ import {
     Input,
     instantiate,
     director,
-    AudioSource
+    AudioSource,
+    RigidBody,
+    Vec3
 } from 'cc';
 import { GunData } from './data/GunData';
-import { BulletController } from './BulletController';
 const { ccclass, property } = _decorator;
 
 @ccclass('GunController')
 export class GunController extends Component {
     animComp: Animation | null = null;
     gunData: GunData | null = null;
-    audioSource:AudioSource|null=null;
+    audioSource: AudioSource | null = null;
+    rigidbody: RigidBody | null = null;
 
     onLoad() {
-        this.audioSource=this.getComponent(AudioSource);
+        this.audioSource = this.getComponent(AudioSource);
+        this.rigidbody = this.getComponent(RigidBody);
         const childGun = this.node.children[0];
+
         if (childGun) {
             this.animComp = childGun.getComponent(Animation);
             this.gunData = childGun.getComponent(GunData);
@@ -37,7 +41,7 @@ export class GunController extends Component {
     }
 
     update(deltaTime: number) {
-
+        log(this.node.eulerAngles.toString() );
     }
 
     setInputActive(active: Boolean) {
@@ -51,6 +55,9 @@ export class GunController extends Component {
         if (event.getButton() == 0) {
             this.playAnimation();
             this.shotBullet();
+            //this.playShotAudio(this.gunData.gunSound);
+            this.giveRotation();
+
         }
     }
 
@@ -73,10 +80,17 @@ export class GunController extends Component {
             bullet.setWorldRotation(worldMuzzleRot);
             director.getScene().addChild(bullet);
             console.log("Bullet created");
-            //this.playShotAudio(this.gunData.gunSound);
-
         }
     }
+    giveRotation() {
+        if (this.node.eulerAngles.x==0) {
+            this.rigidbody.setAngularVelocity(new Vec3(0, 0, this.gunData.gunRotationSpeed));
+        } else {
+            this.rigidbody.setAngularVelocity(new Vec3(0, 0, -this.gunData.gunRotationSpeed));
+        }
+
+    }
+
     playShotAudio(gunSound: AudioClip) {
         if (gunSound) {
             this.audioSource.playOneShot(gunSound);
