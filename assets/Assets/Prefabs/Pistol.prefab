@@ -216,16 +216,16 @@
     },
     "_lpos": {
       "__type__": "cc.Vec3",
-      "x": 0.021,
-      "y": 0.34,
-      "z": -4.662936703425658e-18
+      "x": 0,
+      "y": 0,
+      "z": 0
     },
     "_lrot": {
       "__type__": "cc.Quat",
       "x": 0,
       "y": 0,
-      "z": -0.9980464054007894,
-      "w": -0.062476977092071284
+      "z": 0,
+      "w": 1
     },
     "_lscale": {
       "__type__": "cc.Vec3",
@@ -239,7 +239,7 @@
       "__type__": "cc.Vec3",
       "x": 0,
       "y": 0,
-      "z": -187.164
+      "z": 0
     },
     "_id": ""
   },
@@ -313,8 +313,6 @@
       "__id__": 0
     },
     "fileId": "bb5++iVxBfZ7M+5LtInizs",
-    "instance": null,
-    "targetOverrides": null,
     "nestedPrefabInstanceRoots": null
   },
   {
@@ -668,6 +666,7 @@
       "__uuid__": "40ff2883-327a-4f0f-96cf-9a74547dd355",
       "__expectedType__": "cc.AudioClip"
     },
+    "gunRotationSpeed": 5,
     "_id": ""
   },
   {
