@@ -14,6 +14,8 @@ export class GunData extends Component {
     public gunSound: AudioClip | null = null;
     @property(Number)
     public gunRotationSpeed: number = 5;
+    @property(Number)
+    public gunForce:number = 100;
 }
 
 

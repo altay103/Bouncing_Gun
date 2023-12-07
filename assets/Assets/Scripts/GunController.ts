@@ -13,18 +13,27 @@ import {
     director,
     AudioSource,
     RigidBody,
-    Vec3
+    Vec3,
+    
+    BoxCollider
 } from 'cc';
 import { GunData } from './data/GunData';
+import { Constants } from './data/Constants';
 const { ccclass, property } = _decorator;
 
+enum Direction{
+    left,
+    right,
+    none
+}
 @ccclass('GunController')
 export class GunController extends Component {
     animComp: Animation | null = null;
     gunData: GunData | null = null;
     audioSource: AudioSource | null = null;
     rigidbody: RigidBody | null = null;
-
+    launch:boolean=false;
+    direction:Direction=Direction.none;
     onLoad() {
         this.audioSource = this.getComponent(AudioSource);
         this.rigidbody = this.getComponent(RigidBody);
@@ -37,11 +46,27 @@ export class GunController extends Component {
             warn("there is no child");
         }
         
-
-    }
-
-    update(deltaTime: number) {
+        let colliders=this.getComponents(BoxCollider);
+        for(const collider of colliders){
+            if(collider.isTrigger){
+                collider.on("onTriggerEnter",this.onTriggerEnter,this);
+                collider.on("onTriggerExit",this.onTriggerExit,this);
+            }
+        }
         
+    }
+    onTriggerEnter(){
+        this.launch=true;
+        this.direction=Direction.none;
+    }
+    onTriggerExit(){
+        this.launch=false;
+    }
+    update(deltaTime: number) {
+        this.giveRotation(this.direction);
+    }
+    applyReducedGravity() {
+        this.rigidbody.applyForce(new Vec3(0,-9.8 * Constants.gravityScale,0));
     }
 
     setInputActive(active: Boolean) {
@@ -56,7 +81,8 @@ export class GunController extends Component {
             this.playAnimation();
             this.shotBullet();
             //this.playShotAudio(this.gunData.gunSound);
-            this.giveRotation();
+            this.changeRotation();
+            this.giveForce();
 
         }
     }
@@ -82,15 +108,31 @@ export class GunController extends Component {
             console.log("Bullet created");
         }
     }
-    giveRotation() {
-        if (this.node.eulerAngles.x==0) {
+    giveRotation(direction:Direction) {
+        if(direction==Direction.left){
             this.rigidbody.setAngularVelocity(new Vec3(0, 0, this.gunData.gunRotationSpeed));
-        } else {
+        }else if(direction==Direction.right){
             this.rigidbody.setAngularVelocity(new Vec3(0, 0, -this.gunData.gunRotationSpeed));
         }
 
     }
-
+    changeRotation(){
+        if (this.node.eulerAngles.x<90 && this.node.eulerAngles.x>-90) {
+            this.direction=Direction.left;
+        }else{
+            this.direction=Direction.right;
+        }
+    }
+    giveForce(){
+        this.rigidbody.setLinearVelocity(new Vec3(0,0,0));
+        if(this.launch){
+            this.rigidbody.applyLocalForce(new Vec3(0,0,this.gunData.gunForce));
+            this.rigidbody.applyForce(new Vec3(0,this.gunData.gunForce,0));
+            log("launch")
+            return;
+        }
+        this.rigidbody.applyLocalForce(new Vec3(0,0,this.gunData.gunForce));
+    }
     playShotAudio(gunSound: AudioClip) {
         if (gunSound) {
             this.audioSource.playOneShot(gunSound);

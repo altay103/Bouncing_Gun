@@ -8,5 +8,11 @@
   },
   "script": {
     "preserveSymlinks": true
+  },
+  "physics": {
+    "allowSleep": false,
+    "gravity": {
+      "y": -1
+    }
   }
 }
