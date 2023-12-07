@@ -3,7 +3,6 @@ const { ccclass, property } = _decorator;
 
 @ccclass('GunData')
 export class GunData extends Component {
-    
     @property(Prefab)
     public bullet: Prefab | null = null;
     @property(Node)
@@ -12,10 +11,12 @@ export class GunData extends Component {
     public bulletSpeed: number = 4;
     @property(AudioClip)
     public gunSound: AudioClip | null = null;
+    @property(AudioClip)
+    public dropSound: AudioClip | null =null;
     @property(Number)
-    public gunRotationSpeed: number = 5;
+    public gunRotationSpeed: number = 4;
     @property(Number)
     public gunForce:number = 100;
+   
 }
-
 

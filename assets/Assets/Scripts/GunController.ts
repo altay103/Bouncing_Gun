@@ -58,6 +58,7 @@ export class GunController extends Component {
     onTriggerEnter(){
         this.launch=true;
         this.direction=Direction.none;
+        this.playAudio(this.gunData.dropSound)
     }
     onTriggerExit(){
         this.launch=false;
@@ -80,7 +81,8 @@ export class GunController extends Component {
         if (event.getButton() == 0) {
             this.playAnimation();
             this.shotBullet();
-            //this.playShotAudio(this.gunData.gunSound);
+            this.playAudio(this.gunData.gunSound);
+            
             this.changeRotation();
             this.giveForce();
 
@@ -133,9 +135,9 @@ export class GunController extends Component {
         }
         this.rigidbody.applyLocalForce(new Vec3(0,0,this.gunData.gunForce));
     }
-    playShotAudio(gunSound: AudioClip) {
-        if (gunSound) {
-            this.audioSource.playOneShot(gunSound);
+    playAudio(sound: AudioClip) {
+        if (sound && Constants.sounds) {
+            this.audioSource.playOneShot(sound);
         }
 
     }
