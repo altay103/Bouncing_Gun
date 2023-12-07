@@ -36,12 +36,12 @@ export class GunController extends Component {
         } else {
             warn("there is no child");
         }
-
+        
 
     }
 
     update(deltaTime: number) {
-        log(this.node.eulerAngles.toString() );
+        
     }
 
     setInputActive(active: Boolean) {
