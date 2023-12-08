@@ -14,6 +14,7 @@ export class BulletController extends Component {
 
         this.schuleDestroy();
     }
+    
     schuleDestroy(){
         this.scheduleOnce(() => {
             this.node.destroy()
