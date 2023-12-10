@@ -7,6 +7,8 @@ export class ParticalController extends Component {
     smoke:ParticleSystem|null=null;
     @property(ParticleSystem)
     fire:ParticleSystem|null=null;
+   
+    
 
     shotPartical(){
         this.playPartical(this.smoke);
