@@ -62,16 +62,22 @@ export class GunController extends Component {
 
     onTriggerEnter() {
         this.launch = true;
-        this.direction = Direction.none;
+        //this.direction = Direction.none;
+        log("Collide");
         this.playAudio(this.gunData.dropSound)
     }
 
     onTriggerExit() {
-        this.launch = false;
+        //this.launch = false;
+        
     }
 
     update(deltaTime: number) {
-        this.giveRotation(this.direction);
+        if (!this.launch) {
+            this.giveRotation(this.direction);
+        }
+
+
     }
 
     applyReducedGravity() {
@@ -87,13 +93,13 @@ export class GunController extends Component {
     onMouseDown(event: EventMouse) {
         log("mouseDown");
         if (event.getButton() == 0) {
-            this.slowmo();
+            //this.slowmo();
             this.playAnimation();
-            this.shotBullet();
             this.playAudio(this.gunData.gunSound);
             this.changeRotation();
             this.giveForce();
-
+            this.shotBullet();
+            this.recoil();
         }
     }
 
@@ -106,25 +112,23 @@ export class GunController extends Component {
         if (bResult) {
             const results = PhysicsSystem.instance.raycastResults;
             results.sort((a, b) => a.distance - b.distance);
-            if(results[0].collider.node.getComponent(BreakableController)){
+            if (results[0].collider.node.getComponent(BreakableController)) {
                 log("Işın çarptı: " + results[0].collider.node.name);
-                
-            }
 
-           
+            }
 
 
         } else {
             log("Işın çarpmadı");
         }
     }
+
     playAnimation() {
         if (this.animComp) {
             this.animComp.play();
         } else {
             warn("no animation component found!");
         }
-
     }
 
     shotBullet() {
@@ -146,21 +150,41 @@ export class GunController extends Component {
             this.rigidbody.setAngularVelocity(new Vec3(0, 0, -this.gunData.gunRotationSpeed));
         }
 
+        //log("gunRotationSpeed "+this.gunData.gunRotationSpeed);
     }
 
     changeRotation() {
         if (this.node.eulerAngles.x < 90 && this.node.eulerAngles.x > -90) {
             this.direction = Direction.left;
+            
         } else {
             this.direction = Direction.right;
+            
         }
     }
-
+    recoil(){
+       
+        if(this.direction==Direction.left){
+            this.node.eulerAngles=new Vec3( this.node.eulerAngles.x +this.gunData.recoil, this.node.eulerAngles.y,this.node.eulerAngles.z);
+            log("left")
+        }else if(this.direction==Direction.right) {
+            log("right")
+            this.node.eulerAngles=new Vec3( this.node.eulerAngles.x -this.gunData.recoil, this.node.eulerAngles.y,this.node.eulerAngles.z);
+        }
+    }
+    
     giveForce() {
         this.rigidbody.setLinearVelocity(new Vec3(0, 0, 0));
         if (this.launch) {
-            this.rigidbody.applyLocalForce(new Vec3(0, 0, this.gunData.gunForce));
-            this.rigidbody.applyForce(new Vec3(0, 1.2 * this.gunData.gunForce, 0));
+            this.rigidbody.applyForce(new Vec3(0, this.gunData.gunForce, 0));
+            if (this.direction == Direction.left) {
+                this.rigidbody.applyForce(new Vec3(- this.gunData.gunForce, 0, 0));
+            } else if (this.direction == Direction.right) {
+                this.rigidbody.applyForce(new Vec3(this.gunData.gunForce, 0, 0));
+            }
+            this.rigidbody.setAngularVelocity(new Vec3(0, 0, 0));
+            //this.rigidbody.applyLocalForce(new Vec3(0, 0, this.gunData.gunForce));
+            this.scheduleOnce(() => this.launch = false, 0.1);
             log("launch")
             return;
         }
@@ -173,5 +197,5 @@ export class GunController extends Component {
         }
 
     }
-    
+
 }
