@@ -5,6 +5,7 @@ export class Constants {
     static gravityScale:number=-0.6; 
     static sounds:boolean=false;
     static level:number=1;
+    static money:number=0;
 }
 
 
