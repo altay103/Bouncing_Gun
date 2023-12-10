@@ -100,6 +100,7 @@ export class GunController extends Component {
             this.giveForce();
             this.shotBullet();
             this.recoil();
+            this.gunData.particalController.shotPartical();
         }
     }
 
