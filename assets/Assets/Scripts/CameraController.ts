@@ -31,6 +31,8 @@ export class CameraController extends Component {
             this.target.position.z + this.defaultDistance.z);
         const currentPosition=this.node.position;
         this.node.setPosition(currentPosition.lerp(targetPosition,this.smoothSpeed));
+        this.node.setRotationFromEuler(this.defaultRotation);
+
     }
 }
 
