@@ -17,6 +17,7 @@ export class UIController extends Component {
     onLoad() {
         this.setMoneyText()
         this.setLevelText()
+        this.setSoundButton()
     }
     setMoneyText() {
         if (Constants.money > 1000) {
