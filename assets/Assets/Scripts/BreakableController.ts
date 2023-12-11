@@ -1,5 +1,6 @@
-import { _decorator, BoxCollider, Collider, Component, Layers, log, Material, MeshRenderer, Node, Animation } from 'cc';
+import { _decorator, BoxCollider, Collider, Component, Layers, log, Material, MeshRenderer, Node, Animation, AudioSource } from 'cc';
 import { Constants } from './data/Constants';
+import { GameManager, GameState } from './GameManager';
 const { ccclass, property } = _decorator;
 
 @ccclass('BreakableController')
@@ -8,8 +9,9 @@ export class BreakableController extends Component {
     material: Material | null = null;
     @property(Boolean)
     rainbow: boolean = false;
-    @property(Animation)
-    animation: Animation | null = null;
+    @property(Number)
+    bonusRate:number=0;
+    private animation: Animation | null = null;
     meshRenderer: MeshRenderer | null = null;
     destoryTime: number = 1;
     start() {
@@ -20,12 +22,18 @@ export class BreakableController extends Component {
             this.node.children[0].getComponent(MeshRenderer);
         }
         const collider: Collider = this.getComponent(BoxCollider);
-        //this.animation=this.getComponent(Animation);
+        this.animation=this.getComponent(Animation);
         collider.on("onTriggerEnter", this.onTriggerEnter, this)
 
     }
     onTriggerEnter(event: any) {
         if (event.otherCollider.node.name == "Bullet") {
+            Constants.bonusRate=this.bonusRate;
+            Constants.gameManager.curState=GameState.success;
+            if(Constants.sounds){
+                this.getComponent(AudioSource).play();
+            }
+            
             this.animation.play();
             this.schuleDestroy();
             event.otherCollider.node.destroy();

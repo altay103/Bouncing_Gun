@@ -87,6 +87,8 @@ export class GunController extends Component {
     setInputActive(active: Boolean) {
         if (active) {
             input.on(Input.EventType.MOUSE_DOWN, this.onMouseDown, this);
+        }else{
+            input.off(Input.EventType.MOUSE_DOWN,this.onMouseDown,this);
         }
     }
 
