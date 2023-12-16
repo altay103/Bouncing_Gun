@@ -12,6 +12,8 @@ export class Constants {
     static money:number=0;
     static sceneMoney:number=0;
     static bonusRate=0;
+    static succesRate=0;
+
 }
 
 

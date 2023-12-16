@@ -29,6 +29,7 @@ export class BreakableController extends Component {
     onTriggerEnter(event: any) {
         if (event.otherCollider.node.name == "Bullet") {
             Constants.bonusRate=this.bonusRate;
+            log("Bonus"+this.bonusRate);
             Constants.gameManager.curState=GameState.success;
             if(Constants.sounds){
                 this.getComponent(AudioSource).play();

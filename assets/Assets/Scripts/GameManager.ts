@@ -38,7 +38,11 @@ export class GameManager extends Component {
                 this.nextUI.active=true;
                 break;
             case GameState.nextLevel:
-                director.loadScene("lvl "+Constants.level.toString())
+                Constants.level++;
+                if(Constants.level>4){
+                    Constants.level=1;
+                }
+                director.loadScene("Lvl "+Constants.level.toString())
                 break;
             case GameState.over:
                 this.scheduleOnce(()=>director.loadScene(director.getScene().name))
